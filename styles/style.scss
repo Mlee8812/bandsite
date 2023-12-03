@@ -1,0 +1,21 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+
+@import './styles/colors';
+@import './styles/fonts';
+@import './styles/breakpoints';
+@import './styles/navbar';
+@import './styles/hero';
+@import './styles/about';
+@import './styles/gallery';
+@import './styles/footer';
