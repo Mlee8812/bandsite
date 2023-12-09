@@ -24,13 +24,13 @@ body {
   font-family: "avenir";
   cursor: default;
 }
+
 a {
   text-decoration: inherit;
   color: inherit;
   cursor: pointer;
-  &:hover {
-    opacity: .7;
-  }
+  width: 100%;
+  height: 100%;
 }
 
 .logo {
@@ -43,6 +43,7 @@ a {
     margin-left: 120px;
   }
 }
+
 .header {
   background-color: #323232;
   height: 80px;
@@ -94,30 +95,26 @@ a {
       text-align: center;
       padding: 2% 2% 0 2%;
       color: $white-color;
+      &:hover {
+        cursor: pointer;
+        border-bottom: solid 4px $white-color;
+        font-family: "avenir-demi-bold";
+        // CREATE ON CLICK EVENT TO TURN ON BORFDR BOTTOM AND ON CLICK FOR OPPOSITE HEADER TO REMOVE BORDER BOTTOM.
+      }
       @include tablet {
         width: auto;
         height: 100%;
         padding: 0% 3% 0 3%;
         padding-bottom: 0%;
       }
-      &:hover {
-        cursor: pointer;
-        color: $white-color;
-        opacity: .5;
-      }
     }
   }
 }
 
-.nav-bio {
-  border-bottom: solid 4px #fff;
+.header__anchor {
+  cursor: pointer;
+  color: $white-color;
   font-family: "avenir-demi-bold";
-}
-
-.nav-show {
-  &:hover {
-    border-bottom: solid 4px #fff;
-  }
 }
 
 .hero {
@@ -148,6 +145,7 @@ a {
     }
   }
 }
+
 .about {
   width: 90%;
   max-width: 1200px;
@@ -299,8 +297,9 @@ a {
   &__image {
     width: 100%;
     padding: 2.5% 0;
+    filter: grayscale(100%);
     &:hover {
-      opacity: .7;
+      filter: none;
       cursor: pointer;
     }
     @include tablet {
@@ -315,6 +314,8 @@ a {
     }
   }
 }
+
+/*********** FOOTER ************/
 footer {
   background-color: $dark-grey-color;
   height: 730px;
@@ -438,6 +439,7 @@ footer {
     }
   }
 }
+
 .icon-wrapper {
   width: 50%;
   display: flex;
@@ -465,33 +467,422 @@ footer {
     height: auto;
   }
 }
-.show {
-  &__hero {
-    background-image: url(../assets/Images/hero-image.jpg);
-    background-position: center;
-    background-size: cover;
-    height: 472px;
+
+// COMMENT SECTION
+.comments {
+  height: auto;
+  max-width: 1200px;
+  margin: auto;
+  &__wrapper {
     display: flex;
+    flex-direction: column;
     align-items: center;
+    height: 100%;
+    width: 90%;
+    max-width: 528px;
+    justify-content: center;
+    margin: auto;
+  }
+  &__header {
+    margin: auto;
+    padding: 2.5% 0 2.5% 0;
+    width: 90%;
+    height: 5%;
     @include tablet {
-      height: 400px;
+      padding: 0 0 3.5% 0;
+      font-size: 2.1rem;
     }
     @include desktop {
-      height: 670px;
+      padding: auto;
+      width: 80%;
+      font-size: 2.1rem;
+    }
+  }
+  &__new {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    align-items: end;
+    height: 350px;
+    border-bottom: solid 1px $silver-color;
+    @include tablet {
+      border-bottom: none;
+      justify-content: space-between;
+    }
+  }
+  &__past-wrapper {
+    @include tablet {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-bottom: 48px;
+    }
+  }
+  &__past {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    align-items: end;
+    height: 195px;
+    border-bottom: solid 1px $silver-color;
+    @include tablet {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 150px;
+    }
+  }
+  &__past-comment {
+    line-height: 1.5;
+    margin: 16px 0 0 0px;
+  }
+  &__img-wrapper {
+    width: 48px;
+    height: 100px;
+    display: flex;
+    align-items: flex-end;
+    @include tablet {
+      height: 90px;
+      margin-left: 35px;
+    }
+  }
+  &__photo {
+    background-image: url(../assets/Images/Mohan-muruge.jpg);
+    background-position: inherit;
+    background-size: cover;
+    height: 48px;
+    width: 48px;
+    border-radius: 50%;
+  }
+  &__past-photo {
+    height: 48px;
+    width: 48px;
+    border-radius: 50%;
+    background-color: $mercury;
+    margin: 35px 0;
+    @include tablet {
+      margin: auto;
+    }
+  }
+  &__text {
+    width: 78%;
+    max-width: 440px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 16px;
+    align-items: flex-end;
+  }
+  &__info {
+    width: 78%;
+    max-width: 440px;
+    display: flex;
+    margin-left: 16px;
+    flex-wrap: wrap;
+    align-items: center;
+    font-size: 0.85rem;
+  }
+  &__name-area {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 74px;
+    margin: 16px 0;
+    width: 100%;
+  }
+  &__label {
+    color: $silver-color;
+    font-family: "avenir-demi-bold";
+    font-size: .9rem;
+  }
+  &__name-input {
+    height: 50px;
+  }
+  &__comment-area {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 120px;
+    margin: 16px 0px;
+    width: 100%;
+  }
+  &__comment-input {
+    height: 96px;
+  }
+  &__button {
+    background-color: #323232;
+    font-family: "avenir-demi-bold";
+    color: #ffffff;
+    border-radius: 5px;
+    height: 48px;
+    margin-bottom: 10%;
+    padding: 0;
+    width: 100%;
+    &:hover {
+      cursor: pointer;
+    }
+    @include tablet {
+      width: 160px;
+    }
+    @include desktop {
+      margin: 0 0 10% 64%;
+    }
+  }
+  &__name {
+    width: 60%;
+    margin: 35px 0 0 0;
+    @include tablet {
+      margin: auto;
+    }
+  }
+  &__date {
+    width: 40%;
+    text-align: end;
+    margin: 35px 0 0 0;
+    color: $silver-color;
+    @include tablet {
+      margin: auto;
+    }
+  }
+}
+/********** INPUT FEILDS ***********/
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+  background-color: $background-white;
+  &::placeholder {
+    color: $dark-grey-color;
+  }
+  &::focus {
+    background-color: $white-color;
+  }
+}
+
+
+
+/********* SHOW PAGE **********/
+
+.show-hero {
+  background-image: url(../assets/Images/show-hero.jpg);
+  background-position: center;
+  background-size: cover;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  @include tablet {
+    height: 670px;
+  }
+  @include desktop {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  &__wrapper {
+    width: 90%;
+    margin: 0 auto;
+    height: 75%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    @include tablet {
+      width: 70%;
+      margin: 0 0 0 5%;
+      height: 70%;
+      justify-content: space-around;
+    }
+    @include desktop {
+      width: 80%;
+      max-width: 1000px;
+      margin: 0 auto 7%;
+      height: 40%;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-end;
     }
   }
   &__heading {
-    color: #ffffff;
-    width: 90%;
-    font-size: 2.1rem;
-    margin: auto;
+    color: $white-color;
+    font-size: 2.2rem;
     font-family: "avenir-bold";
     line-height: 1.5;
     @include tablet {
       font-size: 3.5rem;
     }
     @include desktop {
-      margin: 0 0 0 120px;
+      width: 55%;
+      height: 87%;
+    }
+  }
+  &__sub-heading {
+    color: $white-color;
+    font-family: "avenir-bold";
+    line-height: 1.5;
+    font-size: .82rem;
+    margin: 0 0 3% 5%;
+    height: 6%;
+    @include tablet {
+      font-size: 1.4rem;
+      margin: 0 0 0% 5%;
+    }
+    @include desktop {
+      font-size: 1.4rem;
+      margin: 0 auto;
+      width: 80%;
+      max-width: 1000px;
+    }
+  }
+  &__music-player {
+    height: 125px;
+    @include tablet {
+      height: 150px;
+      width: 75%;
+    }
+    @include desktop {
+      height: 50%;
+      width: 40%;
+    }
+  }
+  &__soundcloud {
+
+    border-radius: 1%;
+  }
+}
+
+.tour {
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  &__table {
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 46px;
+  }
+  &__wrapper {
+    height: 300px;
+    width: 90%;
+    margin: 10px auto 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    border-bottom: solid 1px $mercury;
+    @include tablet {
+      height: 100px;
+      width: 90%;
+      max-width: 700px;
+      margin: 0 auto 0;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: end;
+      border-bottom: none;
+    }
+  }
+  &__heading {
+    margin: 11% auto 0%;
+    width: 90%;
+    @include tablet {
+      font-size: 2.1rem;
+      margin: 8% 0 1% 5%;
+    }
+  }
+  &__section {
+    height: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    @include tablet {
+      height: 100%;
+      width: 20%;
+      justify-content: space-evenly;
+    }
+  }
+  &__button {
+    background-color: $dark-grey-color;
+    font-family: "avenir-demi-bold";
+    text-align: center;
+    color: $white-color;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20%;
+    @include tablet {
+      height: 50%;
+      width: 25%;
+      margin: auto 0;
+    }
+  }
+}
+
+.date {
+  &__input {
+    color: $silver-color;
+    font-family: "avenir-demi-bold";
+    font-size: .9rem;
+    @include tablet {
+      display: none;
+    }
+  }
+  &__title {
+    font-family: "avenir-demi-bold";
+  }
+}
+
+.venue {
+  &__input {
+    color: $silver-color;
+    font-family: "avenir-demi-bold";
+    font-size: .9rem;
+    @include tablet {
+      display: none;
+    }
+  }
+}
+
+.location {
+  &__input {
+    color: $silver-color;
+    font-family: "avenir-demi-bold";
+    font-size: .9rem;
+    @include tablet {
+      display: none;
+    }
+  }
+}
+
+.main {
+  &__date {
+    @include tablet {
+      display: inline-block;
+      color: $silver-color;
+      font-family: "avenir-demi-bold";
+      font-size: .9rem;
+    }
+  }
+  &__venue {
+    @include tablet {
+      display: inline-block;
+      color: $silver-color;
+      font-family: "avenir-demi-bold";
+      font-size: .9rem;
+    }
+  }
+  &__location {
+    @include tablet {
+      display: inline-block;
+      color: $silver-color;
+      font-family: "avenir-demi-bold";
+      font-size: .9rem;
     }
   }
 }
