@@ -43,9 +43,7 @@ const loadShows = () => {
     tourHeading.classList.add("tour__heading");
     tourTable.appendChild(tourHeading);
     tourHeading.innerText = "Shows";
-    // UPON PAGE LOAD, JAVASCRIPT WILL LOAD THE FOLLOWING ABOVE
 
-    // BELOW, THE FOREACH LOOP WILL KEEP CREATING NEW ELEMENTS UNTIL THE ARRAY OF OBJECTS ENDS.
     showContent.forEach(showContentObj => {
         // TOUR WRAPPER
         let tourWrapper = document.createElement("div");
