@@ -1,37 +1,22 @@
-let showContent = [
-    {
-        date: "Mon Sept 06 2021",
-        venue: "Ronald Lane",
-        location: "San Francisco, CA"
-    },
-    {
-        date: "Tue Sept 21 2021",
-        venue: "Pier 3 East",
-        location: "San Francisco, CA"
-    },
-    {
-        date: "Fri Oct 15 2021",
-        venue: "View Lounge",
-        location: "San Francisco, CA"
-    },
-    {
-        date: "Sat Nov 06 2021",
-        venue: "Hyatt Agency",
-        location: "San Francisco, CA"
-    },
-    {
-        date: "Fri Nov 26 2021",
-        venue: "Moscow Center",
-        location: "San Francisco, CA"
-    },
-    {
-        date: "Wed Dec 15 2021",
-        venue: "Pres Club",
-        location: "San Francisco, CA"
-    }
-];
+const bandSite_API = "7aff767f-c1fc-485c-9772-4ad04735c565"
 
-const loadShows = () => {
+function getFunc(param) {
+    let sortArr = []
+    param.forEach(i => {
+        sortArr.push(i)
+    })
+    console.log(sortArr);
+    loadShows(sortArr);
+}
+///////////// AXIOS GET REQUEST ///////////////
+axios.get(`https://project-1-api.herokuapp.com/showdates?api_key=${bandSite_API}`, {
+}).then(res => {
+    getFunc(res.data);
+}).catch(err => {
+    console.log(err);
+});
+////////////////////////////////////////////////
+const loadShows = (sortArr) => {
     // TOUR PARENT ELEMENT
     const tourParent = document.querySelector(".tour");
     // TOUR TABLE
@@ -39,12 +24,13 @@ const loadShows = () => {
     tourTable.classList.add("tour__table");
     tourParent.appendChild(tourTable);
     // TOUR HEADING
-    let tourHeading = document.createElement("H2");
+    let tourHeading = document.createElement("h2");
     tourHeading.classList.add("tour__heading");
     tourTable.appendChild(tourHeading);
     tourHeading.innerText = "Shows";
-
-    showContent.forEach(showContentObj => {
+    // UPON PAGE LOAD, JAVASCRIPT WILL LOAD THE FOLLOWING ABOVE
+    // BELOW, THE FOREACH LOOP WILL KEEP CREATING NEW ELEMENTS UNTIL THE ARRAY OF OBJECTS ENDS.
+    sortArr.forEach(showContentObj => {
         // TOUR WRAPPER
         let tourWrapper = document.createElement("div");
         tourWrapper.classList.add("tour__wrapper");
@@ -83,7 +69,7 @@ const loadShows = () => {
         let tourVenueInfo = document.createElement("div");
         tourVenueInfo.classList.add("venue__title");
         tourSectionVenue.appendChild(tourVenueInfo);
-        tourVenueInfo.innerText = showContentObj.venue;
+        tourVenueInfo.innerText = showContentObj.place;
 
         let tourSectionLocation = document.createElement("div");
         tourSectionLocation.classList.add("tour__section");
@@ -106,8 +92,4 @@ const loadShows = () => {
         tourWrapper.appendChild(tourButton);
         tourButton.innerText = "BUY TICKETS";
     });
-};
-
-window.onload = () => {
-    loadShows();
 };
