@@ -1,0 +1,520 @@
+@font-face {
+    font-family: "AvenirNext LT Pro";
+    src: url("../../assets/Font/AvenirNextLTPro-Regular.woff2") format("woff2"), url("../../assets/Font/AvenirNextLTPro-Regular.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: "AvenirNext LT Pro";
+    src: url("../../assets/Font/AvenirNextLTPro-Demi.woff2") format("woff2"), url("../../assets/Font/AvenirNextLTPro-Demi.woff") format("woff");
+    font-weight: 600;
+    font-style: normal;
+}
+@font-face {
+    font-family: "AvenirNext LT Pro";
+    src: url("../../assets/Font/AvenirNextLTPro-Bold.woff2") format("woff2"), url("../../assets/Font/AvenirNextLTPro-Bold.woff") format("woff");
+    font-weight: 700;
+    font-style: normal;
+}
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: "";
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+.wrapper, .hero__wrapper, .shows__wrapper, .footer__wrapper {
+    margin: 0 1rem;
+}
+@media screen and (min-width: 768px) {
+    .wrapper, .hero__wrapper, .shows__wrapper, .footer__wrapper {
+        margin: 0 2.25rem;
+    }
+}
+@media screen and (min-width: 1280px) {
+    .wrapper, .hero__wrapper, .shows__wrapper, .footer__wrapper {
+        max-width: 64rem;
+        margin: 0 auto;
+    }
+}
+
+.padding-bottom, .hero__text, .footer__copyright, .footer__logo, .footer__information .container__item, .footer__information, .footer__img-container, .nav__item, .nav__logo-img, h3 {
+    padding-bottom: 1rem;
+}
+@media screen and (min-width: 768px) {
+    .padding-bottom, .hero__text, .footer__copyright, .footer__logo, .footer__information .container__item, .footer__information, .footer__img-container, .nav__item, .nav__logo-img, h3 {
+        padding-bottom: 1.5rem;
+    }
+}
+
+body {
+    font-family: "AvenirNext LT Pro";
+}
+
+hr {
+    border-top: 5px solid #323232;
+}
+
+h1 {
+    font-family: "AvenirNext LT Pro";
+    font-weight: 600;
+    font-size: 1.5rem;
+    line-height: 2rem;
+    color: #ffffff;
+}
+@media screen and (min-width: 768px) {
+    h1 {
+        font-size: 3.75rem;
+        line-height: 4.25rem;
+    }
+}
+
+h2 {
+    font-family: "AvenirNext LT Pro";
+    font-weight: 600;
+    font-size: 1.5rem;
+    line-height: 2rem;
+    padding-top: 1.5rem;
+    padding-bottom: 1rem;
+}
+@media screen and (min-width: 768px) {
+    h2 {
+        font-size: 2.25rem;
+        line-height: 2.75rem;
+        padding-top: 3rem;
+        padding-bottom: 2.25rem;
+    }
+}
+
+h3 {
+    font-family: "AvenirNext LT Pro";
+    font-weight: 600;
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+}
+@media screen and (min-width: 768px) {
+    h3 {
+        font-size: 1.5rem;
+        line-height: 2rem;
+    }
+}
+
+p {
+    font-size: 0.8125rem;
+    line-height: 1.125rem;
+}
+@media screen and (min-width: 768px) {
+    p {
+        font-size: 0.875rem;
+        line-height: 1.375rem;
+    }
+}
+
+.footer-copy {
+    font-size: 0.8125rem;
+    line-height: 1.125rem;
+}
+@media screen and (min-width: 768px) {
+    .footer-copy {
+        font-size: 0.875rem;
+        line-height: 1.25rem;
+    }
+}
+
+.label-btn, .shows .table__body .table__row .cell:before, .btn {
+    font-family: "AvenirNext LT Pro";
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #e1e1e1;
+    font-size: 0.625rem;
+    line-height: 1.25rem;
+}
+@media screen and (min-width: 768px) {
+    .label-btn, .shows .table__body .table__row .cell:before, .btn {
+        font-size: 0.75rem;
+        line-height: 1.25rem;
+    }
+}
+
+.nav {
+    background-color: #323232;
+    padding-top: 1rem;
+}
+@media screen and (min-width: 768px) {
+    .nav {
+        padding-top: 1.5rem;
+    }
+}
+.nav__wrapper {
+    margin: 0;
+}
+@media screen and (min-width: 768px) {
+    .nav__wrapper {
+        display: flex;
+        margin: 0 2.25rem;
+    }
+}
+@media screen and (min-width: 1280px) {
+    .nav__wrapper {
+        max-width: 64rem;
+        margin: 0 auto;
+    }
+}
+.nav__logo {
+    text-align: center;
+}
+.nav__logo-img {
+    width: 8.75rem;
+}
+@media screen and (min-width: 768px) {
+    .nav__logo-img {
+        margin-right: 3rem;
+    }
+}
+.nav__menu {
+    width: 100%;
+}
+.nav__list {
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+@media screen and (min-width: 768px) {
+    .nav__list {
+        gap: 3rem;
+    }
+}
+.nav__item {
+    width: 50%;
+    transition: border-bottom 0.3s;
+}
+@media screen and (min-width: 768px) {
+    .nav__item {
+        width: auto;
+        margin-bottom: -5px;
+    }
+}
+.nav__item--active {
+    border-bottom: 3px #ffffff solid;
+    font-weight: 600;
+}
+.nav__item:hover {
+    border-bottom: 3px #e1e1e1 solid;
+}
+.nav__link {
+    font-size: 1rem;
+    text-decoration: none;
+    color: #e1e1e1;
+}
+.nav__link--active {
+    color: #ffffff;
+}
+.nav__link:hover {
+    color: #ffffff;
+}
+
+.footer {
+    background-color: #323232;
+    color: #ffffff;
+}
+.footer__title {
+    display: flex;
+    flex-direction: column;
+}
+@media screen and (min-width: 768px) {
+    .footer__title {
+        flex-direction: row;
+        align-items: baseline;
+    }
+}
+.footer__title .logo {
+    display: none;
+}
+@media screen and (min-width: 768px) {
+    .footer__title .logo {
+        display: flex;
+        flex-grow: 1;
+        justify-content: flex-end;
+    }
+}
+.footer__img-container {
+    display: flex;
+    flex-direction: row;
+    width: 10rem;
+    justify-content: space-between;
+}
+@media screen and (min-width: 768px) {
+    .footer__img-container {
+        width: 25%;
+        justify-content: center;
+        gap: 2rem;
+    }
+}
+.footer__information {
+    display: flex;
+    flex-direction: column;
+}
+@media screen and (min-width: 768px) {
+    .footer__information {
+        width: 100%;
+        flex-direction: row;
+        gap: 4rem;
+    }
+}
+.footer__information .container__item {
+    display: flex;
+    flex-direction: column;
+}
+.footer__information .container__item--bold {
+    font-weight: 600;
+}
+.footer__logo {
+    width: 8.75rem;
+}
+@media screen and (min-width: 768px) {
+    .footer__logo {
+        display: none;
+    }
+}
+.btn {
+    font-size: 1rem;
+    height: 2.5rem;
+    min-width: 150px;
+    border-radius: 4px;
+    padding: 0 2rem;
+    background-color: #323232;
+    color: #ffffff;
+    border: 0;
+}
+.btn:hover {
+    background-color: #000000;
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+@media screen and (min-width: 768px) {
+    .btn {
+        width: 150px;
+        align-self: flex-end;
+    }
+}
+
+.table-padding, .shows .table__header .table__row .cell {
+    padding: 1rem;
+}
+@media screen and (min-width: 768px) {
+    .table-padding, .shows .table__header .table__row .cell {
+        padding: 1.5rem 1.125rem;
+    }
+}
+
+.hero {
+    background-image: url(../assets/Images/hero-shows.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+@media screen and (min-width: 768px) {
+    .hero {
+        min-height: 31.25rem;
+        height: 45vh;
+    }
+}
+@media screen and (min-width: 1280px) {
+    .hero {
+        height: 50vh;
+        background-position: 50% 25%;
+    }
+}
+.hero__overlay {
+    background-color: #32323280;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+.hero__wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 2rem 0;
+}
+@media screen and (min-width: 1280px) {
+    .hero__wrapper {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+.hero__text {
+    color: #ffffff;
+    max-width: 15rem;
+}
+@media screen and (min-width: 768px) {
+    .hero__text {
+        max-width: 31.25rem;
+    }
+}
+.hero__sound {
+    width: 100%;
+}
+@media screen and (min-width: 768px) {
+    .hero__sound {
+        max-width: 28.125rem;
+    }
+}
+@media screen and (min-width: 1280px) {
+    .hero__sound {
+        align-self: center;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .shows__wrapper {
+        display: flex;
+        justify-content: space-between;
+        gap: 5rem;
+    }
+}
+.shows__header {
+    padding-left: 1rem;
+}
+@media screen and (min-width: 768px) {
+    .shows__header {
+        padding-left: 0;
+    }
+}
+@media screen and (min-width: 1280px) {
+    .shows__schedule {
+        padding-top: 2.7rem;
+        width: 100%;
+    }
+}
+.shows .table {
+    table-layout: fixed;
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    vertical-align: center;
+}
+.shows .table__header .table__row {
+    display: none;
+}
+@media screen and (min-width: 768px) {
+    .shows .table__header .table__row {
+        display: flex;
+        flex-direction: row;
+    }
+}
+.shows .table__header .table__row .cell {
+    flex: 1;
+}
+.shows .table__body .table__row {
+    display: block;
+    border-bottom: 1px solid #e1e1e1;
+}
+@media screen and (min-width: 768px) {
+    .shows .table__body .table__row {
+        display: flex;
+        align-items: center;
+    }
+}
+.shows .table__body .table__row:hover {
+    background-color: #fafafa;
+}
+@media screen and (min-width: 768px) {
+    .shows .table__body .table__row--selected {
+        background-color: #e1e1e1;
+    }
+    .shows .table__body .table__row--selected:hover {
+        background-color: #e1e1e1;
+    }
+}
+.shows .table__body .table__row .cell {
+    padding: 1rem;
+    display: block;
+    width: 100%;
+}
+@media screen and (min-width: 768px) {
+    .shows .table__body .table__row .cell {
+        flex: 1;
+        padding: 1.5rem 1.125rem;
+        display: table-cell;
+        width: auto;
+    }
+}
+.shows .table__body .table__row .cell:before {
+    content: attr(data-label);
+    display: block;
+}
+@media screen and (min-width: 768px) {
+    .shows .table__body .table__row .cell:before {
+        display: none;
+    }
+}
+.shows .table__body .table__row .cell .btn {
+    width: 100%;
+    min-width: 10rem;
+}
+@media screen and (min-width: 768px) {
+    .shows .table__body .table__row .cell .btn {
+        width: 10.3125rem;
+    }
+}
+.shows .table__body .table__date {
+    font-weight: 600;
+}/*# sourceMappingURL=shows.css.map */
