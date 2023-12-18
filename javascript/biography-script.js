@@ -1,142 +1,148 @@
-const bandSite_API = "7aff767f-c1fc-485c-9772-4ad04735c565"
+const link = "https://project-1-api.herokuapp.com/comments";
+const apiKey = "?api_key=afdcbcc1-e37a-423f-a461-44db821825d0";
+//function takes in comment data and return html card with format
+function displayComment(comment){
+    const commentLi = document.createElement("li");
+    commentLi.classList.add("item");
+    commentsList.appendChild(commentLi);
 
-function getFunc(param) {
-    let sortArr = []
-    param.forEach(i => {
-        sortArr.push(i)
-    })
-    let revArr = sortArr.reverse();
-    console.log(revArr);
-    loadComments(revArr);
+    const itemImg = document.createElement("img");
+    itemImg.classList.add("item__img");
+    itemImg.setAttribute("src", " ");
+    commentLi.appendChild(itemImg);
+
+    const itemSection = document.createElement("div");
+    itemSection.classList.add("item__section");
+    commentLi.appendChild(itemSection);
+
+    const itemHeader = document.createElement("div");
+    itemHeader.classList.add("item__title");
+    itemSection.appendChild(itemHeader);
+
+    const itemName = document.createElement("p");
+    itemName.classList.add("item__name");
+    itemName.innerHTML = comment.name;
+    itemHeader.appendChild(itemName);
+
+    const itemDate = document.createElement("p");
+    itemDate.classList.add("item__date");
+    itemDate.innerText = new Date(comment.timestamp).toLocaleDateString(
+        "en-US"
+    );
+    itemHeader.appendChild(itemDate);
+
+    const itemBody = document.createElement("div");
+    itemBody.classList.add("item__body");
+    itemSection.appendChild(itemBody);
+
+    const bodyCopy = document.createElement("p");
+    bodyCopy.innerText = comment.comment;
+    itemBody.appendChild(bodyCopy);
+
+    const itemFooter = document.createElement("div");
+    itemFooter.classList.add("item__footer");
+    itemSection.appendChild(itemFooter);
+
+    const likeImgLink = document.createElement("a");
+    likeImgLink.classList.add("item__actions", "item__actions--like");
+    likeImgLink.setAttribute("data-id", comment.id);
+    // likeImgLink.setAttribute("onclick", "liked(this)");
+    likeImgLink.setAttribute("value", "like");
+    itemFooter.appendChild(likeImgLink);
+
+    const likeImg = document.createElement("img");
+    likeImg.classList.add("like-img");
+    likeImg.setAttribute("src", "./assets/Icons/SVG/icon-like.svg");
+    likeImg.setAttribute("data-id", comment.id);
+    likeImg.setAttribute("value", "like");
+    likeImgLink.appendChild(likeImg);
+
+    const likeCounter = document.createElement("p");
+    likeImg.classList.add("like-counter");
+    likeCounter.innerText = comment.likes;
+    likeImgLink.appendChild(likeCounter);
+
+    const deleteLink = document.createElement("a");
+    deleteLink.classList.add("item__actions", "item__actions--delete");
+    deleteLink.setAttribute("data-id", comment.id);
+    deleteLink.innerText = "Delete";
+    // deleteLink.setAttribute("onclick", "deleteComment(this)");
+    deleteLink.setAttribute("value", "delete");
+    itemFooter.appendChild(deleteLink);
 }
-// sort api array based on timestamp.
+//function returns comments card list from api response data
+function showCommentsList() {
+    const getComments = axios.get(link + apiKey);
+    getComments.then((res) => {
+        const commentsData = res.data;
+        const commentsArrey = commentsData.sort(
+            (a, b) => b.timestamp - a.timestamp
+        );
+        commentsList.innerHTML = "";
+        commentsArrey.forEach((comment) => {
+            displayComment(comment);
 
-function timeSince(date) {
-    var seconds = Math.floor((new Date() - date) / 1000);
-    var interval = Math.floor(seconds / 31536000);
-    if (interval > 1) {
-        return interval + " years ago";
-    }
-    interval = Math.floor(seconds / 2592000);
-    if (interval > 1) {
-        return interval + " months ago";
-    }
-    interval = Math.floor(seconds / 86400);
-    if (interval > 1) {
-        return interval + " days ago";
-    }
-    interval = Math.floor(seconds / 3600);
-    if (interval > 1) {
-        return interval + " hours ago";
-    }
-    interval = Math.floor(seconds / 60);
-    if (interval > 1) {
-        return interval + " minutes ago";
-    }
-    return Math.floor(seconds) + " seconds ago";
-}
-var aDay = 24 * 60 * 60 * 1000;
-console.log(timeSince(new Date(Date.now() - aDay)));
-console.log(timeSince(new Date(Date.now() - aDay * 2)));
-///////////// AXIOS GET REQUEST WORKS ///////////////
-axios.get(`https://project-1-api.herokuapp.com/comments?api_key=${bandSite_API}`, {
-
-}).then(res => {
-    getFunc(res.data);
-}).catch(err => {
-    console.log(err);
-});
-///////////////////////////////////////////////////////////
-
-const loadComments = (arr) => {
-    const commPastParent = document.querySelector(".comments__past-wrapper");
-
-    arr.forEach(commContentObj => {
-
-        // COMMENTS PAST SHELL
-        let commPast = document.createElement('div');
-        commPast.classList.add("comments__past");
-        commPastParent.appendChild(commPast);
-        // COMMENTS PAST PHOTO
-        let commPastPhoto = document.createElement('div');
-        commPastPhoto.classList.add("comments__past-photo");
-        commPast.appendChild(commPastPhoto);
-        // COMMENTS INFO
-        let commInfo = document.createElement('div');
-        commInfo.classList.add("comments__info");
-        commPast.appendChild(commInfo);
-        // COMMENTS NAME
-        let commName = document.createElement('div');
-        commName.classList.add("comments__name");
-        commInfo.appendChild(commName);
-        commName.innerText = commContentObj.name;
-        // COMMENTS DATE
-        let commDate = document.createElement('div');
-        commDate.classList.add("comments__date");
-        commInfo.appendChild(commDate);
-        commDate.innerText = timeSince(commContentObj.timestamp);
-        // COMMENTS CONTENT
-        let commContent = document.createElement('div');
-        commContent.classList.add("comments__past-comment");
-        commInfo.appendChild(commContent);
-        commContent.innerText = commContentObj.comment;
-    });
-};
-
-const form = document.querySelector('form');
-// SETS 'FORM' AS THE ELEMENT FOR THE LISTENER
-form.addEventListener('submit', (eventObj) => {
-    eventObj.preventDefault();
-    let newCommObject = {};
-    newCommObject.name = eventObj.target.name.value;
-    // CREATES A TIME STAMP VALUE FOR WHEN THE SUBMIT BUTTON IS PRESSED
-    newCommObject.date = Date.now();
-    newCommObject.comment = eventObj.target.comment.value;
-    // commContent.unshift(newCommObject); ////////// NEED SYNTAX FOR API ARRAY
-    // console.log(commContent);
-
-    ///////AXIOS POST REQUESTS///////////////
-    axios.post(`https://project-1-api.herokuapp.com/comments?api_key=${bandSite_API}`, {
-        name: newCommObject.name,
-        comment: newCommObject.comment
-    }).then(res => {
-        axios.get(`https://project-1-api.herokuapp.com/comments?api_key=${bandSite_API}`, {
-
-        }).then(res => {
-            // let sortArr = []
-            // res.data.forEach(i => {
-            //   sortArr.push(i)
-            // })
-            // let revArr = sortArr.reverse(); ///// CHANGE THIS TO SORT BY TIMESTAMP ****
-            // console.log(revArr);
-            // res.data.sort
-            // console.log(res.data);
-            getFunc(res.data);
-            // loadComments(revArr);
-        }).catch(err => {
-            console.log(err);
         });
-        console.log(res);
-        // loadComments(res);/////////////////
-    }).catch(err => {
-        console.log(err);
     });
-    /////////////////////////////////////////////
-    clearAll();
-    form.reset();
+}
+
+const form = document.querySelector(".form");
+const commentsList = document.querySelector(".comments__list");
+showCommentsList();
+//add comment once the submit button is clicked
+form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const submittedName = event.target.formName;
+    const submittedComment = event.target.formComment;
+    if (formValidation(submittedName,submittedComment)) {
+        const postedComment = {
+            name: submittedName.value,
+            comment: submittedComment.value,
+        };
+        const addComment = axios.post(link + apiKey, postedComment);
+        addComment.then((res) => {
+            event.target.reset();
+            showCommentsList();
+        });
+    }
 });
 
-function clearAll() {
-    //CREATED A PARENT
-    const newparent = document.querySelector(".comments__past-wrapper");
-    // CREATED A CHILD
-    let child = newparent.getElementsByClassName("comments__past");
-    // RAN A LOOP THE LENGTH OF ALL THE CURRENT COMMENTS. ON EACH ITERATION OF THE LOOP IT WOULD REMOVE THE CHILD ELEMENT (COMMENT).
-    for (let i = child.length; i > 0; i--) {
-        newparent.removeChild(child[i - 1]);
-    }
-};
-// TURN FOR LOOP HERE INTO A FOREACH FUNCTION TO DELETE EACH COMMENT IN MY COMMENT SECTION.
+// listens for clicks on comment like and delete button of a comment and takes action accordingly
+const itemActions = document.querySelector(".comments__list");
 
-let apiForm = document.querySelector('form');
-console.log(form);
+itemActions.addEventListener("click", (event) => {
+
+    if (event.target.getAttribute("data-id")) {
+        const userId = event.target.getAttribute("data-id");
+        if (event.target.getAttribute("value") === "like") {
+            const addLike = axios.put(link + "/" + userId + "/like" + apiKey);
+            addLike.then((res) => {
+                showCommentsList();
+            });
+        } else {
+            const delComment = axios.delete(link + "/" + userId + apiKey);
+            delComment.then((res) => {
+                showCommentsList();
+            });
+        }
+    }
+});
+
+//function check if the text added in the field is valid characters
+function formValidation (nameField, commentField) {
+    const re = /^[a-zA-Z]/
+    if (!re.test(nameField.value)) {
+        nameField.focus();
+        nameField.value = "";
+        nameField.classList.add("form__input--error");
+        return false
+
+    } else if (!re.test(commentField.value)) {
+        commentField.focus();
+        commentField.value = ""
+        commentField.classList.add("form__input--error");
+        return false
+    } else {
+        return true
+    }
+}

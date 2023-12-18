@@ -1,888 +1,235 @@
-@import 'mixins';
-@import 'variables';
-@import 'fonts';
+@use './partials/font' as *;
+@use './partials/mixins' as *;
+@use './partials/variables' as *;
+@use './partials/global.scss' as *;
 
-.clearfix:after {visibility: hidden; display: block; font-size: 0; content: ''; clear: both; height: 0; }
-
-html { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
-}
-
-*, *:before, *:after {box-sizing: inherit}
-
-h1,h2,h3,h4 {
-  margin: 0;
-}
-
-
-
-h1,h2 {
-  font-family: "avenir-bold";
-}
-
-
-body {
-  font-family: "avenir";
-  cursor: default;
-}
-
-a {
-  text-decoration: inherit;
-  color: inherit;
-  cursor: pointer;
-  width: 100%;
-  height: 100%;
-}
-
-.logo {
-  background-color: $dark-grey-color;
-  height: 50%;
-  @include tablet {
-    margin-left: 5%;
-  }
-  @include desktop {
-    margin-left: 120px;
-  }
-}
-
-.header {
-  background-color: #323232;
-  height: 80px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  @include tablet {
-    flex-direction: row;
-    align-items: center;
-  }
-  &__list {
-    width: 100%;
-    height: 100%;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    @include tablet {
-      width: 100%;
-      height: 60%;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-  }
-  &__nav {
-    width: 100%;
-    height: 50%;
-    @include tablet {
-      width: 24%;
-      height: 100%;
-      margin-left: 7%;
-      display: flex;
-      align-items: flex-end;
-    }
-    @include desktop {
-      width: 15%;
-      margin-left: 56px;
-    }
-
-    &__item {
-      width: 50%;
-      height: 100%;
-      text-align: center;
-      padding: 2% 2% 0 2%;
-      color: $white-color;
-      &:hover {
-        cursor: pointer;
-        border-bottom: solid 4px $white-color;
-        font-family: "avenir-demi-bold";
-        // CREATE ON CLICK EVENT TO TURN ON BORFDR BOTTOM AND ON CLICK FOR OPPOSITE HEADER TO REMOVE BORDER BOTTOM.
-      }
-      @include tablet {
-        width: auto;
-        height: 100%;
-        padding: 0% 3% 0 3%;
-        padding-bottom: 0%;
-      }
-    }
-  }
-}
-
-.header__anchor {
-  cursor: pointer;
-  color: $white-color;
-  font-family: "avenir-demi-bold";
-}
 
 .hero {
-  background-image: url(../assets/Images/hero-image.jpg);
+  background-image: url(../assets/Images/hero-bio.jpg);
+  height: 55vw;
   background-position: center;
   background-size: cover;
-  height: 183px;
-  display: flex;
-  align-items: center;
-  @include tablet {
-    height: 400px;
-  }
+  background-repeat: no-repeat;
   @include desktop {
-    height: 670px;
+    height: 60vh;
   }
-  &__heading {
-    color: $white-color;
-    width: 90%;
-    font-size: 1.5rem;
-    margin: 0 0 0 5%;
-    font-family: "avenir-bold";
-    line-height: 1.5;
-    @include tablet {
-      font-size: 3.5rem;
-    }
-    @include desktop {
-      margin: 0 0 0 120px;
-    }
+
+  &__overlay {
+    background-color: #32323280;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+  &__wrapper {
+    display: flex;
+    width: 100%;
+    @extend .wrapper;
   }
 }
 
 .about {
-  width: 90%;
-  max-width: 1200px;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  @include desktop {
-    width: auto;
-    margin: auto;
+  &__wrapper {
+    @extend .wrapper;
+
   }
-  &__heading {
-    margin: 11% 0 10% 0;
+  &__container {
     @include tablet {
-      font-size: 2.1rem;
-      margin: 8% 0 5% 0;
-    }
-    @include desktop {
-      font-size: 2.1rem;
-      margin: 48px 0 48px 120px;
+      padding: 0 3rem;
     }
   }
-  &__img-wrapper {
-    height: 160px;
-    @include tablet {
-      height: auto;
-    }
-    @include desktop {
-      width: 775px;
-      height: auto;
-      margin: auto;
+  .quote {
+    &__by {
+      font-size: 1rem;
+      font-weight: 600;
     }
   }
-  &__img {
-    width: 100%;
-    height: 100%;
+  &__img-container {
+    background-image: url(../assets/Images/band.jpg);
+    height: 50vw;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+    @extend .padding-bottom;
     @include tablet {
-      height: 362px;
+      height: 40vw;
     }
     @include desktop {
-      height: 100%;
-      width: 100%;
-    }
-  }
-  &__quote-block {
-    font-family: "avenir-demi-bold";
-    margin: 10% 0 15% 0;
-    @include tablet {
-      margin: 5% 0 8% 0;
-      font-size: 1.5rem;
-    }
-    @include desktop {
-      margin: 48px auto 56px;
-      font-size: 1.5rem;
-      width: 775px;
+      height: 30vw;
     }
   }
   &__quote {
-    padding-bottom: 9%;
-    line-height: 1.5;
-    @include tablet {
-      padding-bottom: 5%;
-    }
-    @include desktop {
-      padding-bottom: 40px;
-    }
-  }
-  &__quote-author {
-    font-size: .9rem;
-    @include desktop {
-      font-size: 1rem;
-    }
-  }
-  &__info {
-    @include tablet {
-      display: flex;
-      flex-flow: wrap;
-      width: 100%;
-      justify-content: space-between;
-    }
-    @include desktop {
-      width: 775px;
-      margin: auto;
-    }
-    &__header {
-      font-size: 1rem;
-      font-family: "avenir-demi-bold";
-      padding-bottom: 5%;
-      @include tablet {
-        font-size: 1.5rem;
-        width: 100%;
-      }
-      @include desktop {
-        padding: 0 0 32px 0;
-      }
-    }
-    &__paragraph {
-      padding-bottom: 7%;
-      font-size: 0.76rem;
-      line-height: 1.5;
-      @include tablet {
-        padding-bottom: 7%;
-        font-size: 0.95rem;
-        width: 49%;
-      }
-      @include desktop {
-        padding-bottom: 48px;
-        font-size: 0.9rem;
-        width: 48%;
-      }
-    }
+    padding: 1rem 0;
   }
 }
-
-.gallery {
-  width: 90%;
-  max-width: 1200px;
-  margin: auto;
-  padding: 7% 0;
-  @include tablet {
-    padding: 5% 0;
-  }
-  @include desktop {
-    width: auto;
-    margin: auto;
-    padding: 48px 120px 40px;
-  }
-  &__header {
-    padding: 2.5% 0 2.5% 0;
-    @include tablet {
-      padding: 0 0 3.5% 0;
-      font-size: 2.1rem;
-    }
-    @include desktop {
-      padding: 0 0 64px 0;
-      font-size: 2.1rem;
-    }
-  }
-  &__img-wrapper {
-    display: flex;
-    flex-direction: column;
-    @include tablet {
-      display: flex;
-      flex-direction: row;
-      width: 100%;
-      flex-wrap: wrap;
-      justify-content: space-between;
-    }
-  }
-  &__image {
-    width: 100%;
-    padding: 2.5% 0;
-    filter: grayscale(100%);
-    &:hover {
-      filter: none;
-      cursor: pointer;
-    }
-    @include tablet {
-      width: 216px;
-      height: 126px;
-      padding: 1.5% 0%;
-    }
-    @include desktop {
-      padding: 0 0 20px 0;
-      width: 305px;
-      height: auto;
-    }
-  }
-}
-
-/*********** FOOTER ************/
-footer {
-  background-color: $dark-grey-color;
-  height: 730px;
-  @include tablet {
-    height: auto;
-  }
-}
-
-.footer {
-  height: 95%;
-  width: 92%;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  color: $white-color;
-  // flex: 1 1 42%;
-  @include tablet {
-    width: 90%;
-  }
-  @include desktop {
-    padding: 0 120px 0 120px;
-    width: auto;
-  }
-  &__social {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 20%;
-    justify-content: space-evenly;
-    padding-top: 5%;
-    @include tablet {
-      height: auto;
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      padding-top: 7%;
-    }
-    @include desktop {
-      height: auto;
-      padding: 48px 0 0 0;
-    }
-  }
-  &__logo {
-    display: none;
-    @include tablet {
-      display: inline-block;
-      padding-left: 15%;
-    }
-    @include desktop {
-      padding-left: 47%;
-    }
-  }
-  &__header {
-    font-size: 2.4rem;
-    font-family: "avenir-bold";
-    @include desktop {
-      font-size: 2.1rem;
-    }
-  }
-  &__info {
-    height: 80%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    font-size: .85rem;
-    @include tablet {
-      height: auto;
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      font-size: 1rem;
-    }
-    @include desktop {
-      font-size: .8rem;
-      width: 67%;
-    }
-  }
-  &__section {
-    display: flex;
-    flex-direction: column;
-    height: 25%;
-    justify-content: space-between;
-    @include tablet {
-      display: flex;
-      flex-direction: column;
-      height: auto;
-      justify-content: space-between;
-    }
-  }
-  &__address {
-    font-style: normal;
-    @include tablet {
-      padding: 0 0 30px 0;
-    }
-  }
-  &__management {
-    font-family: "avenir-demi-bold";
-    font-size: .9rem;
-    @include tablet {
-      padding: 45px 0 30px 0;
-      font-size: 1rem;
-    }
-    @include desktop {
-      font-size: .9rem;
-    }
-  }
-  &__booking {
-    @include tablet {
-      padding: 0 0 30px 0;
-    }
-  }
-  &__copyright {
-    font-size: .85rem;
-    width: 75%;
-    @include tablet {
-      padding: 35px 0 40px 0;
-      font-size: 1rem;
-    }
-    @include desktop {
-      font-size: .9rem;
-    }
-  }
-}
-
-.icon-wrapper {
-  width: 50%;
-  display: flex;
-  justify-content: space-between;
-  padding-left: 1%;
-  @include tablet {
-    width: 23%;
-    padding-left: 0;
-    height: auto;
-    justify-content: space-around;
-    align-items: center;
-  }
-  @include desktop {
-    width: 15%;
-  }
-}
-
-.icon-image {
-  height: 130%;
-  &:hover {
-    opacity: .7;
-    cursor: pointer;
-  }
-  @include tablet {
-    height: auto;
-  }
-}
-
-// COMMENT SECTION
-.comments {
-  height: auto;
-  max-width: 1200px;
-  margin: auto;
-  &__wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 100%;
-    width: 90%;
-    max-width: 528px;
-    justify-content: center;
-    margin: auto;
-  }
-  &__header {
-    margin: auto;
-    padding: 2.5% 0 2.5% 0;
-    width: 90%;
-    height: 5%;
-    @include tablet {
-      padding: 0 0 3.5% 0;
-      font-size: 2.1rem;
-    }
-    @include desktop {
-      padding: auto;
-      width: 80%;
-      font-size: 2.1rem;
-    }
-  }
-  &__new {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    width: 100%;
-    align-items: end;
-    height: 350px;
-    border-bottom: solid 1px $silver-color;
-    @include tablet {
-      border-bottom: none;
-      justify-content: space-between;
-    }
-  }
-  &__past-wrapper {
-    @include tablet {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      margin-bottom: 48px;
-    }
-  }
-  &__past {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 100%;
-    align-items: end;
-    height: 195px;
-    border-bottom: solid 1px $silver-color;
-    @include tablet {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 150px;
-    }
-  }
-  &__past-comment {
-    line-height: 1.5;
-    margin: 16px 0 0 0px;
-  }
-  &__img-wrapper {
-    width: 48px;
-    height: 100px;
-    display: flex;
-    align-items: flex-end;
-    @include tablet {
-      height: 90px;
-      margin-left: 35px;
-    }
-  }
-  &__photo {
-    background-image: url(../assets/Images/Mohan-muruge.jpg);
-    background-position: inherit;
-    background-size: cover;
-    height: 48px;
-    width: 48px;
-    border-radius: 50%;
-  }
-  &__past-photo {
-    height: 48px;
-    width: 48px;
-    border-radius: 50%;
-    background-color: $mercury;
-    margin: 35px 0;
-    @include tablet {
-      margin: auto;
-    }
-  }
-  &__text {
-    width: 78%;
-    max-width: 440px;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-left: 16px;
-    align-items: flex-end;
-  }
-  &__info {
-    width: 78%;
-    max-width: 440px;
-    display: flex;
-    margin-left: 16px;
-    flex-wrap: wrap;
-    align-items: center;
-    font-size: 0.85rem;
-  }
-  &__name-area {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 74px;
-    margin: 16px 0;
-    width: 100%;
-  }
-  &__label {
-    color: $silver-color;
-    font-family: "avenir-demi-bold";
-    font-size: .9rem;
-  }
-  &__name-input {
-    height: 50px;
-  }
-  &__comment-area {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 120px;
-    margin: 16px 0px;
-    width: 100%;
-  }
-  &__comment-input {
-    height: 96px;
-  }
-  &__button {
-    background-color: #323232;
-    font-family: "avenir-demi-bold";
-    color: #ffffff;
-    border-radius: 5px;
-    height: 48px;
-    margin-bottom: 10%;
-    padding: 0;
-    width: 100%;
-    &:hover {
-      cursor: pointer;
-    }
-    @include tablet {
-      width: 160px;
-    }
-    @include desktop {
-      margin: 0 0 10% 64%;
-    }
-  }
-  &__name {
-    width: 60%;
-    margin: 35px 0 0 0;
-    @include tablet {
-      margin: auto;
-    }
-  }
-  &__date {
-    width: 40%;
-    text-align: end;
-    margin: 35px 0 0 0;
-    color: $silver-color;
-    @include tablet {
-      margin: auto;
-    }
-  }
-}
-/********** INPUT FEILDS ***********/
-input[type=text], select, textarea {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  resize: vertical;
-  background-color: $background-white;
-  &::placeholder {
-    color: $dark-grey-color;
-  }
-  &::focus {
-    background-color: $white-color;
-  }
-}
-
-
-
-/********* SHOW PAGE **********/
-
-.show-hero {
-  background-image: url(../assets/Images/show-hero.jpg);
-  background-position: center;
-  background-size: cover;
-  height: 500px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  @include tablet {
-    height: 670px;
-  }
-  @include desktop {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  &__wrapper {
-    width: 90%;
-    margin: 0 auto;
-    height: 75%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    @include tablet {
-      width: 70%;
-      margin: 0 0 0 5%;
-      height: 70%;
-      justify-content: space-around;
-    }
-    @include desktop {
-      width: 80%;
-      max-width: 1000px;
-      margin: 0 auto 7%;
-      height: 40%;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: flex-end;
-    }
-  }
-  &__heading {
-    color: $white-color;
-    font-size: 2.2rem;
-    font-family: "avenir-bold";
-    line-height: 1.5;
-    @include tablet {
-      font-size: 3.5rem;
-    }
-    @include desktop {
-      width: 55%;
-      height: 87%;
-    }
-  }
-  &__sub-heading {
-    color: $white-color;
-    font-family: "avenir-bold";
-    line-height: 1.5;
-    font-size: .82rem;
-    margin: 0 0 3% 5%;
-    height: 6%;
-    @include tablet {
-      font-size: 1.4rem;
-      margin: 0 0 0% 5%;
-    }
-    @include desktop {
-      font-size: 1.4rem;
-      margin: 0 auto;
-      width: 80%;
-      max-width: 1000px;
-    }
-  }
-  &__music-player {
-    height: 125px;
-    @include tablet {
-      height: 150px;
-      width: 75%;
-    }
-    @include desktop {
-      height: 50%;
-      width: 40%;
-    }
-  }
-  &__soundcloud {
-
-    border-radius: 1%;
-  }
-}
-
-.tour {
-  width: 100%;
-  max-width: 1200px;
-  margin: auto;
-  &__table {
-    width: 100%;
-    max-width: 1200px;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 46px;
-  }
-  &__wrapper {
-    height: 300px;
-    width: 90%;
-    margin: 10px auto 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    border-bottom: solid 1px $mercury;
-    @include tablet {
-      height: 100px;
-      width: 90%;
-      max-width: 700px;
-      margin: 0 auto 0;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: end;
-      border-bottom: none;
-    }
-  }
-  &__heading {
-    margin: 11% auto 0%;
-    width: 90%;
-    @include tablet {
-      font-size: 2.1rem;
-      margin: 8% 0 1% 5%;
-    }
-  }
-  &__section {
-    height: 20%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    @include tablet {
-      height: 100%;
-      width: 20%;
-      justify-content: space-evenly;
-    }
-  }
-  &__button {
-    background-color: $dark-grey-color;
-    font-family: "avenir-demi-bold";
-    text-align: center;
-    color: $white-color;
-    border-radius: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 20%;
-    @include tablet {
-      height: 50%;
-      width: 25%;
-      margin: auto 0;
-    }
-  }
-}
-
-.date {
-  &__input {
-    color: $silver-color;
-    font-family: "avenir-demi-bold";
-    font-size: .9rem;
-    @include tablet {
-      display: none;
-    }
-  }
+.description {
   &__title {
-    font-family: "avenir-demi-bold";
+    // font-size: 1rem;
+  }
+  &__wrapper {
+    @extend .wrapper;
+    @include tablet {
+      padding: 0 3rem;
+    }
+  }
+  &__container {
+    @include tablet {
+      display: flex;
+      gap: 16px;
+    }
+
+
+  }
+  * {
+    @extend .padding-bottom
   }
 }
-
-.venue {
-  &__input {
-    color: $silver-color;
-    font-family: "avenir-demi-bold";
-    font-size: .9rem;
+.gallery {
+  background-color: $secondary-alabaster;
+  &__wrapper {
+    @extend .wrapper
+  }
+  &__img-container {
+    @include flexbox(column);
     @include tablet {
-      display: none;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-between
+    }
+    @include desktop {
+    }
+    .img {
+      @extend .padding-bottom;
+      @include tablet {
+        width: 32%;
+      }
     }
   }
 }
+.comments {
+  &__wrapper {
+    @extend .wrapper;
+    @extend .padding-bottom;
+  }
+  &__container{
+    .form {
+      @include flexbox();
+      justify-content: center;
+      @extend .padding-bottom;
+      gap: 20px;
+      &__img {
 
-.location {
-  &__input {
-    color: $silver-color;
-    font-family: "avenir-demi-bold";
-    font-size: .9rem;
-    @include tablet {
-      display: none;
+        border-radius: 50%;
+        height: 2.25rem;
+        width: 2.25rem;
+        object-fit: cover;
+        object-position: left;
+        margin-top: 20px;
+        @include tablet {
+          height: 3rem;
+          width: 3rem;
+        }
+      }
+      &__fields {
+        @include flexbox(column);
+      }
+      &__label {
+        padding-bottom: 4px;
+        color: $secondary-mercury;
+      }
+      &__input {
+        height: 2.25rem;
+        border-radius: 4px;
+        padding: .75rem;
+        border: 1px solid $secondary-mercury;
+        margin-bottom: 1rem;
+        width: 75vw;
+        @include tablet {
+          height: 3rem;
+          padding: 1rem;
+          width: 60vw;
+          max-width: 31.25rem;
+        }
+        &:focus{
+          outline: none;
+          border-color: $primary-black;
+        }
+        &--error {
+          &:focus {
+            border-color: #d22d2d;
+          }
+        }
+        &--textarea {
+          resize: none;
+          height: auto;
+          @include fonts();
+        }
+      }
     }
   }
-}
+  &__display {
+    display: flex;
+    justify-content: center;
+    // padding: 1rem;
+  }
+  &__list {
+    @include flexbox(column);
+    justify-content: center;
+    width: 100%;
 
-.main {
-  &__date {
-    @include tablet {
-      display: inline-block;
-      color: $silver-color;
-      font-family: "avenir-demi-bold";
-      font-size: .9rem;
-    }
-  }
-  &__venue {
-    @include tablet {
-      display: inline-block;
-      color: $silver-color;
-      font-family: "avenir-demi-bold";
-      font-size: .9rem;
-    }
-  }
-  &__location {
-    @include tablet {
-      display: inline-block;
-      color: $silver-color;
-      font-family: "avenir-demi-bold";
-      font-size: .9rem;
+    .item {
+      @include flexbox();
+      justify-content: center;
+      gap: 1.25rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid $secondary-mercury;
+      margin: auto;
+      &__img {
+        background-color: $secondary-mercury;
+        border-radius: 50%;
+        height: 2.25rem;
+        width: 2.25rem;
+        object-fit: cover;
+        object-position: left;
+        @include tablet {
+          height: 3rem;
+          width: 3rem;
+        }
+      }
+      &__section {
+        justify-content: center;
+        width: 75vw;
+        @include tablet {
+          width: 60vw;
+          max-width: 31.25rem;
+        }
+
+      }
+      &__title {
+        display: flex;
+        justify-content: space-between;
+      }
+      &__name {
+        font-weight: 600;
+      }
+      &__date {
+        color: $secondary-mercury;
+      }
+      &__footer {
+        display: flex;
+        justify-content: space-between;
+        margin-top: .5rem;
+      }
+      &__actions {
+        text-decoration: none;
+        display: flex;
+        align-items: flex-start;
+        gap: .3125rem;
+        color: $primary-black;
+        background-color: white;
+        // border: none;
+        margin: 0;
+      }
     }
   }
 }
