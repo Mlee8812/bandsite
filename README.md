@@ -18,3 +18,6 @@ JavaScript: Implemented for dynamic and interactive features, such as event hand
 
 Axios: Utilized for making asynchronous HTTP requests to fetch data, enhancing the user experience by updating content dynamically.
 
+![Screenshot 2024-01-23 at 3 03 06 PM](https://github.com/Mlee8812/bandsite/assets/97935821/662cc9ad-2d98-4a0b-8f80-8c95029efd91)
+![Screenshot 2024-01-23 at 3 03 14 PM](https://github.com/Mlee8812/bandsite/assets/97935821/249cb09d-a9cf-4031-a28c-fdbe3a6b4fcf)
+![Screenshot 2024-01-23 at 3 03 21 PM](https://github.com/Mlee8812/bandsite/assets/97935821/50dd0d89-032b-4038-9714-16c26d12bd6b)
